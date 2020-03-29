@@ -28,12 +28,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarToggle">
                     <div class="navbar-nav mr-auto">
-                        <a class="nav-item nav-link" href="{% url 'core-home' %}">Home</a>
-                        <a class="nav-item nav-link" href="{% url 'core-about' %}">About</a>
+                        
+                        
                     </div>
                     <!-- Navbar Right Side -->
                     {% if user.is_authenticated %}
-                        <a class="nav-item nav-link" href="#">New Post</a>
                         <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
                         <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
                     {% else %}
@@ -53,13 +52,24 @@
             </div>
             <div class="col-md-4">
                 <div class="content-section">
-                <h3>Our Sidebar</h3>
-                <p class='text-muted'>You can put any information here you'd like.
+                <h3>Pantry</h3>
+                <p class='text-muted'> Modify your current food items
                     <ul class="list-group">
-                    <li class="list-group-item list-group-item-light">Latest Posts</li>
-                    <li class="list-group-item list-group-item-light">Announcements</li>
-                    <li class="list-group-item list-group-item-light">Calendars</li>
-                    <li class="list-group-item list-group-item-light">etc</li>
+                        {% if user.is_authenticated %}
+                            <li class="list-group-item list-group-item-light">
+                                <a href="{% url 'add-food' %}">Add food</a>
+                            </li>
+                            <li class="list-group-item list-group-item-light">
+                                <a href="{% url 'myfood' user.username %}">My Food</a>
+                            </li>
+                            <li class="list-group-item list-group-item-light">
+                                <a href="{% url 'expired' user.username %}">Expired Food</a>
+                            </li>
+                        {% else %}
+                            <li class="list-group-item list-group-item-light">Add Food</li>
+                            <li class="list-group-item list-group-item-light">My Food</li>
+                            <li class="list-group-item list-group-item-light">Expired Food</li>
+                        {% endif %}
                     </ul>
                 </p>
                 </div>
