@@ -1,4 +1,16 @@
 {% extends "core/base.html" %}
 {% block content %}
-    <h1>WasteLess Home</h1>
+    <h2>A few places where your food can help</h2>
+    {% for object in objects %}
+        <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{ object.imgurl }}">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <small class="text-muted">{{ object.open_hours }}</small>
+                </div>
+                <h2><a class="article-title" href="#">{{ object.title }}</a></h2>
+                <p class="article-content">{{ object.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
 {% endblock content %}
