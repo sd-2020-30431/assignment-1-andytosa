@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'core.apps.CoreConfig',
     'users.apps.UsersConfig',
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -129,3 +130,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'core-home'
 LOGIN_URL = 'login'
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
+
